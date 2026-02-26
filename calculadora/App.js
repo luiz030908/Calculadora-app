@@ -11,13 +11,13 @@ export default function App() {
   const theme = themes[mode];
 
   return (
-    <View style={[styles.container, { backgroundColor : theme.bg }]}>
+    <View style={[styles.container, { backgroundColor: theme.bg }]}>
       <StatusBar barStyle={mode === "dark" ? "light-content" : 'dark-content'} />
 
       <View style={styles.topBar}>
         <Pressable
           onPress={() => setMode((m) => (m === "dark" ? "light" : "dark"))}
-          style={({pressed}) => [
+          style={({ pressed }) => [
             styles.toggle,
             {
               backgroundColor: theme.card,
@@ -26,16 +26,28 @@ export default function App() {
             }
           ]}
         >
-          <Text style={{ color: theme.text, fontWeight: "700"}}>
-            {mode === "dark" ? "Escuro": "Claro"}
+          <Text style={{ color: theme.text, fontWeight: "700" }}>
+            {mode === "dark" ? "Escuro" : "Claro"}
           </Text>
         </Pressable>
       </View>
       <Display
         theme={theme}
-        expression={state.expression}
-        value={state.display}
+        expression={"100 + "}
+        value={0}
       />
+
+      <View style={styles.pad}>
+        {/* {Linha 1} */}
+        <View style={styles.row}>
+          <CalcButton theme={theme} label="C" variant="neutral" onPress={() => {}} />
+          <CalcButton theme={theme} label="+/-" variant="neutral" onPress={() => {}} />
+          <CalcButton theme={theme} label="%" variant="neutral" onPress={() => {}} />
+          <CalcButton theme={theme} label="÷" variant="op" onPress={() => {}} />
+        </View>
+
+      </View>
+
     </View>
   );
 }
